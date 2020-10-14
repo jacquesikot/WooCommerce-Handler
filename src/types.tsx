@@ -28,7 +28,7 @@ export type ProductNavParamList = {
   ProductDetail: { product: ProductProps };
 };
 
-export type CustomersParamList = {
+export type CustomerNavParamList = {
   Customers: undefined;
   CustomerDetail: undefined;
 };
@@ -56,6 +56,14 @@ export interface OrderProps {
   amount: number;
   payment: string;
   products: ProductProps[];
+}
+
+export interface CustomerProps {
+  id: number;
+  firstName: string;
+  lastName: string;
+  value: number;
+
 }
 
 // Others

@@ -23,7 +23,9 @@ const styles = StyleSheet.create({
     width: IMAGE_WIDTH,
     height: IMAGE_HEIGHT,
     borderRadius: theme.borderRadii.m,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.dark,
+    justifyContent: 'center',
+    alignItems: 'center',
     overflow: 'hidden',
   },
   innerText: {
@@ -59,14 +61,28 @@ interface ListCardProps {
   product?: boolean;
   rating?: number;
   edit?: boolean;
+  customer?: boolean;
 }
 
-const ListCard = ({ title, subTitle, image, onPress, product, rating, edit }: ListCardProps) => {
+const ListCard = ({
+  title,
+  subTitle,
+  image,
+  onPress,
+  product,
+  rating,
+  edit,
+  customer,
+}: ListCardProps) => {
   const noOfLines = product ? 2 : 1;
   return (
     <Box style={styles.container}>
       <Box style={styles.innerBox}>
-        {image && <Image source={image} style={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }} />}
+        {image ? (
+          <Image source={image} style={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }} />
+        ) : (
+          <Feather name="user" size={50} color={theme.colors.light} />
+        )}
       </Box>
       <Box style={styles.innerText}>
         <Text
@@ -78,7 +94,11 @@ const ListCard = ({ title, subTitle, image, onPress, product, rating, edit }: Li
           {title}
         </Text>
         <Text variant="h8" color="primary" marginTop="s">
-          {product ? 'NGN' + ' ' + numberWithCommas(Number(subTitle)) : subTitle}
+          {product
+            ? 'NGN' + ' ' + numberWithCommas(Number(subTitle))
+            : customer
+            ? 'Value:' + ' NGN' + ' ' + numberWithCommas(Number(subTitle))
+            : subTitle}
         </Text>
         {rating && (
           <Box style={{ marginTop: 3 }}>

@@ -18,7 +18,7 @@ const Products = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Products" filter={() => true} plus={() => true} />
-      <Box>
+      <Box style={{ paddingBottom: 95 }}>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={products}

@@ -4,10 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AppNavParamList } from '../types';
 import { Box, theme } from '../components';
 import { HomeIcon, OrdersIcon, CustomerIcon, ProductsIcon } from '../Svgs';
-import { Customers } from '../screens';
 import HomeNav from './HomeNav';
 import OrderNav from './OrderNav';
 import ProductNav from './ProductNav';
+import CustomerNav from './CustomerNav';
 
 const AppStack = createBottomTabNavigator<AppNavParamList>();
 
@@ -61,7 +61,7 @@ const AppNav = () => {
       />
       <AppStack.Screen
         name="Customers"
-        component={Customers}
+        component={CustomerNav}
         options={{
           tabBarIcon: ({ color }) => {
             return <CustomerIcon color={color} />;
