@@ -1,0 +1,193 @@
+import { OrderProps } from '../types';
+
+const orders: OrderProps[] = [
+  {
+    id: 684595623315,
+    name: 'James Johnson',
+    amount: 34000,
+    payment: 'card',
+    products: [
+      {
+        id: 856230232005,
+        name: 'Nike Benassi Product',
+        price: 45000,
+        image: require('../../assets/products/product1.png'),
+        quantity: 1,
+      },
+      {
+        id: 54879633251633,
+        name: 'Gucci Xam Expert Faux Leather',
+        price: 70000,
+        image: require('../../assets/products/product2.png'),
+        quantity: 3,
+      },
+      {
+        id: 224978549,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product4.png'),
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 2879416169465,
+    name: 'David Nagmbi',
+    amount: 156000,
+    payment: 'cash',
+    products: [
+      {
+        id: 787765,
+        name: 'Special Faux Backpack',
+        price: 35000,
+        image: require('../../assets/products/product3.png'),
+        quantity: 1,
+      },
+      {
+        id: 45654624353,
+        name: 'Gucci Xam Expert Faux Leather',
+        price: 70000,
+        image: require('../../assets/products/product5.png'),
+        quantity: 3,
+      },
+      {
+        id: 23423423434233,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product6.png'),
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 356616546515,
+    name: 'Alexander Abiola',
+    amount: 255000,
+    payment: 'card',
+    products: [
+      {
+        id: 15484961,
+        name: 'Nike Benassi Product',
+        price: 45000,
+        image: require('../../assets/products/product1.png'),
+        quantity: 1,
+      },
+      {
+        id: 296854125365895,
+        name: 'Gucci Xam Expert Faux Leather',
+        price: 70000,
+        image: require('../../assets/products/product2.png'),
+        quantity: 3,
+      },
+      {
+        id: 354841252369,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product4.png'),
+        quantity: 2,
+      },
+      {
+        id: 58845563252,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product7.png'),
+        quantity: 2,
+      },
+      {
+        id: 46845151,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product6.png'),
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 35666546546515,
+    name: 'Joshua Imoh',
+    amount: 300000,
+    payment: 'card',
+    products: [
+      {
+        id: 154961,
+        name: 'Nike Benassi Product',
+        price: 45000,
+        image: require('../../assets/products/product1.png'),
+        quantity: 1,
+      },
+      {
+        id: 29125365895,
+        name: 'Gucci Xam Expert Faux Leather',
+        price: 70000,
+        image: require('../../assets/products/product2.png'),
+        quantity: 3,
+      },
+      {
+        id: 35369,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product4.png'),
+        quantity: 2,
+      },
+      {
+        id: 5563252,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product7.png'),
+        quantity: 2,
+      },
+      {
+        id: 46851,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product6.png'),
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    id: 356616515,
+    name: 'Aduke Otobong Johnson',
+    amount: 255000,
+    payment: 'card',
+    products: [
+      {
+        id: 14961,
+        name: 'Nike Benassi Product',
+        price: 45000,
+        image: require('../../assets/products/product1.png'),
+        quantity: 1,
+      },
+      {
+        id: 29665895,
+        name: 'Gucci Xam Expert Faux Leather',
+        price: 70000,
+        image: require('../../assets/products/product2.png'),
+        quantity: 3,
+      },
+      {
+        id: 354841252,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product4.png'),
+        quantity: 2,
+      },
+      {
+        id: 5845563252,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product7.png'),
+        quantity: 2,
+      },
+      {
+        id: 4684551,
+        name: 'Prada Special Uniz',
+        price: 20000,
+        image: require('../../assets/products/product6.png'),
+        quantity: 2,
+      },
+    ],
+  },
+];
+
+export default orders;
