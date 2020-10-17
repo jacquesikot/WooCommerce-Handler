@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Box, theme, Text } from '.';
 import Donut from './charts/Donut';
@@ -37,6 +38,7 @@ interface HomeCardProps {
   value?: string;
   percentage?: number;
   radius?: number;
+  onPress?: () => void;
 }
 
 const HomeCard = ({
@@ -47,6 +49,7 @@ const HomeCard = ({
   value,
   percentage,
   radius,
+  onPress,
 }: HomeCardProps) => {
   const reBorderColorValue = card ? card : 'primary';
   const reBgColor = card ? card : 'dark';
@@ -66,9 +69,11 @@ const HomeCard = ({
     >
       {!card ? (
         <Box style={{ alignItems: 'center' }}>
-          <Box style={styles.circle}>
-            <Icon name="plus" color={theme.colors.white} size={22} />
-          </Box>
+          <TouchableOpacity onPress={onPress}>
+            <Box style={styles.circle}>
+              <Icon name="plus" color={theme.colors.white} size={22} />
+            </Box>
+          </TouchableOpacity>
           <Text variant="h7" color="primary" marginTop="m">
             Add new product
           </Text>

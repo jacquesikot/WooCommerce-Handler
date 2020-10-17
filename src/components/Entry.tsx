@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: theme.spacing.s,
     alignItems: 'center',
+    // backgroundColor: theme.colors.primary,
+    width: '70%',
+    height: 37,
+    borderRadius: theme.borderRadii.m,
   },
 });
 
@@ -20,11 +24,10 @@ interface EntryProps {
 const Entry = ({ title, value }: EntryProps) => {
   return (
     <Box style={styles.container}>
-      <Icon name="chevron-right" color={theme.colors.red} size={16} />
-      <Text variant="h6" color="dark">
+      <Text variant="h6" color="white" marginLeft="m">
         {title + ':'}
       </Text>
-      <Text variant="b2" color="dark">
+      <Text variant="h6" color="white">
         {' ' + value}
       </Text>
     </Box>

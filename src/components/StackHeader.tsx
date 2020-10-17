@@ -1,8 +1,9 @@
 import React from 'react';
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import { Box, theme, Text } from '.';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const { width } = Dimensions.get('window');
 

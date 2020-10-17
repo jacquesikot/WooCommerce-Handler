@@ -1,9 +1,11 @@
+LogBox.ignoreAllLogs(true);
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { LogBox } from 'react-native';
 import { ThemeProvider } from '@shopify/restyle';
 
-import { Button, LoadAssets, theme } from './src/components';
+import { LoadAssets, theme } from './src/components';
 import AppNav from './src/navigation/AppNav';
 
 const fonts = {
@@ -20,6 +22,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <LoadAssets fonts={fonts} assets={assets}>
+        <StatusBar backgroundColor={theme.colors.white} />
         <AppNav />
       </LoadAssets>
     </ThemeProvider>

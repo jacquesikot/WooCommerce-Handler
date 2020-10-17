@@ -1,8 +1,10 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 
 import { Box, theme, Header, ListCard } from '../../components';
 import { products } from '../../data';
+import { ProductNavParamList } from '../../types';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,10 +16,10 @@ const styles = StyleSheet.create({
 
 interface ProductsProps {}
 
-const Products = () => {
+const Products = ({ navigation }: StackScreenProps<ProductNavParamList, 'Products'>) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header title="Products" filter={() => true} plus={() => true} />
+      <Header title="Products" filter={() => true} plus={() => navigation.navigate('AddProduct')} />
       <Box style={{ paddingBottom: 95 }}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -29,8 +31,9 @@ const Products = () => {
                 title={item.name}
                 subTitle={item.price.toString()}
                 image={item.image}
-                onPress={() => true}
+                onPress={() => navigation.navigate('ProductDetail', { product: item })}
                 rating={item.rating}
+                remove={() => true}
                 product
                 edit
               />

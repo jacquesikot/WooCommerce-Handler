@@ -11,7 +11,7 @@ interface ButtonProps {}
 
 const Button = () => {
   return (
-    <Box>
+    <Box style={styles.container}>
       <Text>hi</Text>
     </Box>
   );

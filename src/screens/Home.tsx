@@ -2,7 +2,15 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { StyleSheet, Dimensions, SafeAreaView } from 'react-native';
 
-import { Box, theme, HomeCard, Header } from '../components';
+import {
+  Box,
+  theme,
+  HomeCard,
+  Header,
+  DonutRings,
+  Text,
+  ChartKey,
+} from '../components';
 import { HomeNavParamList } from '../types';
 
 const { width, height: wHeight } = Dimensions.get('window');
@@ -27,10 +35,9 @@ const styles = StyleSheet.create({
   topCard: {
     width: SCREEN_WIDTH,
     height: 150,
-    backgroundColor: theme.colors.red,
+    backgroundColor: theme.colors.lightDark,
     borderRadius: theme.borderRadii.l,
-    justifyContent: 'center',
-    paddingTop: theme.spacing.xl,
+    alignItems: 'center',
     flexDirection: 'row',
   },
   bottomRow: {
@@ -38,6 +45,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginLeft: theme.spacing.xl,
     marginTop: theme.spacing.m,
+  },
+  topCardText: {
+    left: '110%',
   },
 });
 
@@ -48,7 +58,24 @@ const Home = ({ navigation }: StackScreenProps<HomeNavParamList, 'Home'>) => {
     <SafeAreaView style={styles.container}>
       <Header title="Home" />
       <Box style={styles.topRow}>
-        <Box style={styles.topCard}></Box>
+        <Box style={styles.topCard}>
+          <DonutRings
+            p3={75}
+            p1={10}
+            p2={65}
+            c3="primary"
+            c1="red"
+            c2="yellow"
+          />
+          <Box style={styles.topCardText}>
+            <Text variant="h3" color="white" marginBottom="m">
+              Order Status
+            </Text>
+            <ChartKey label="Completed" color="primary" value={65} />
+            <ChartKey label="Pending" color="red" value={12} />
+            <ChartKey label="Processing" color="yellow" value={22} />
+          </Box>
+        </Box>
       </Box>
       <Box style={styles.bottomRow}>
         <HomeCard
@@ -78,7 +105,11 @@ const Home = ({ navigation }: StackScreenProps<HomeNavParamList, 'Home'>) => {
           percentage={63}
           radius={25}
         />
-        <HomeCard width={150} height={HOME_CARD_HEIGHT} />
+        <HomeCard
+          width={150}
+          height={HOME_CARD_HEIGHT}
+          onPress={() => navigation.navigate('AddProduct')}
+        />
       </Box>
     </SafeAreaView>
   );

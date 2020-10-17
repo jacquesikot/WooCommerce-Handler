@@ -26,6 +26,7 @@ export type OrderNavParamList = {
 export type ProductNavParamList = {
   Products: undefined;
   ProductDetail: { product: ProductProps };
+  AddProduct: undefined;
 };
 
 export type CustomerNavParamList = {
@@ -55,6 +56,7 @@ export interface OrderProps {
   name: string;
   amount: number;
   payment: string;
+  status: 'completed' | 'pending' | 'processing';
   products: ProductProps[];
 }
 
@@ -63,7 +65,16 @@ export interface CustomerProps {
   firstName: string;
   lastName: string;
   value: number;
+}
 
+export interface CategoriesProps {
+  id: number;
+  name: string;
+}
+
+export interface OrderStatusProps {
+  id: number;
+  status: string;
 }
 
 // Others

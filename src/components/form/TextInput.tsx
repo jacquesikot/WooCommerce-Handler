@@ -5,7 +5,10 @@ import {
   TextInputProps as RNTextInputProps,
   Dimensions,
 } from 'react-native';
-import { FontAwesome5 as Icon, Feather as Icon2 } from '@expo/vector-icons';
+import {
+  FontAwesome5 as Icon,
+  MaterialCommunityIcons as Icon2,
+} from '@expo/vector-icons';
 
 import { Box, theme, Text } from '..';
 
@@ -62,7 +65,13 @@ const TextInput = ({
   const iconColorValue = iconColor ? iconColor : theme.colors.yellow;
   const iconBgColorValue = iconBgColor ? iconBgColor : theme.colors.yellowDark;
   return (
-    <Box style={[styles.container, styles.shadow, { width: widthNo, height: heightNo }]}>
+    <Box
+      style={[
+        styles.container,
+        styles.shadow,
+        { width: widthNo, height: heightNo },
+      ]}
+    >
       <Box style={[styles.icon, { backgroundColor: iconBgColorValue }]}>
         {iconName === 'user-alt' ? (
           <Icon name={iconName} color={iconColorValue} size={16} />

@@ -6,6 +6,7 @@ const orders: OrderProps[] = [
     name: 'James Johnson',
     amount: 34000,
     payment: 'card',
+    status: 'processing',
     products: [
       {
         id: 856230232005,
@@ -35,6 +36,7 @@ const orders: OrderProps[] = [
     name: 'David Nagmbi',
     amount: 156000,
     payment: 'cash',
+    status: 'pending',
     products: [
       {
         id: 787765,
@@ -64,6 +66,7 @@ const orders: OrderProps[] = [
     name: 'Alexander Abiola',
     amount: 255000,
     payment: 'card',
+    status: 'processing',
     products: [
       {
         id: 15484961,
@@ -107,6 +110,7 @@ const orders: OrderProps[] = [
     name: 'Joshua Imoh',
     amount: 300000,
     payment: 'card',
+    status: 'completed',
     products: [
       {
         id: 154961,
@@ -150,6 +154,7 @@ const orders: OrderProps[] = [
     name: 'Aduke Otobong Johnson',
     amount: 255000,
     payment: 'card',
+    status: 'completed',
     products: [
       {
         id: 14961,

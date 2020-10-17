@@ -1,9 +1,16 @@
 import React from 'react';
-import { Dimensions, Image, ImageRequireSource, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  ImageRequireSource,
+  StyleSheet,
+} from 'react-native';
 import { MaterialCommunityIcons as Icon, Feather } from '@expo/vector-icons';
 
 import { Box, theme, Text, Rating } from '../../components';
 import { numberWithCommas } from '../../utils';
+import { ProductProps } from '../../types';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width } = Dimensions.get('window');
 const SCREEN_WIDTH = width - theme.spacing.xxl * 2;
 const IMAGE_WIDTH = 70;
@@ -62,6 +69,7 @@ interface ListCardProps {
   rating?: number;
   edit?: boolean;
   customer?: boolean;
+  remove?: () => void;
 }
 
 const ListCard = ({
@@ -73,13 +81,17 @@ const ListCard = ({
   rating,
   edit,
   customer,
+  remove,
 }: ListCardProps) => {
   const noOfLines = product ? 2 : 1;
   return (
     <Box style={styles.container}>
       <Box style={styles.innerBox}>
         {image ? (
-          <Image source={image} style={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }} />
+          <Image
+            source={image}
+            style={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}
+          />
         ) : (
           <Feather name="user" size={50} color={theme.colors.light} />
         )}
@@ -107,15 +119,29 @@ const ListCard = ({
         )}
       </Box>
       <Box style={{ flex: 1 }} />
-      <TouchableOpacity onPress={onPress}>
-        <Box style={styles.chevron}>
-          {edit ? (
-            <Feather name="edit-3" size={20} color={theme.colors.white} />
-          ) : (
-            <Icon name="chevron-right" color={theme.colors.white} size={30} />
-          )}
-        </Box>
-      </TouchableOpacity>
+      <Box>
+        <TouchableOpacity onPress={onPress}>
+          <Box style={styles.chevron}>
+            {edit ? (
+              <Feather name="edit-3" size={20} color={theme.colors.white} />
+            ) : (
+              <Icon name="chevron-right" color={theme.colors.white} size={30} />
+            )}
+          </Box>
+        </TouchableOpacity>
+        {remove && (
+          <TouchableOpacity onPress={remove}>
+            <Box
+              style={[
+                styles.chevron,
+                { marginTop: 8, backgroundColor: theme.colors.red },
+              ]}
+            >
+              <Feather name="trash" color={theme.colors.white} size={20} />
+            </Box>
+          </TouchableOpacity>
+        )}
+      </Box>
     </Box>
   );
 };

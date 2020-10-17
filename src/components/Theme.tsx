@@ -14,6 +14,7 @@ const theme = createTheme({
     purple: '#6952DC',
     darkGreen: '#286053',
     dark: '#1F2E35',
+    lightDark: '#30444E',
     light: '#96A7AF',
     black: '#000',
   },
@@ -23,6 +24,7 @@ const theme = createTheme({
     l: 15,
     xl: 20,
     xxl: 30,
+    xxxl: 55,
   },
   borderRadii: {
     none: 0,
