@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
 interface ListCardProps {
   title: string;
   subTitle: string;
-  image?: ImageRequireSource;
+  image?: string;
   onPress: () => void;
   product?: boolean;
   rating?: number;
@@ -89,7 +89,7 @@ const ListCard = ({
       <Box style={styles.innerBox}>
         {image ? (
           <Image
-            source={image}
+            source={{ uri: image }}
             style={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}
           />
         ) : (
@@ -106,11 +106,7 @@ const ListCard = ({
           {title}
         </Text>
         <Text variant="h8" color="primary" marginTop="s">
-          {product
-            ? 'NGN' + ' ' + numberWithCommas(Number(subTitle))
-            : customer
-            ? 'Value:' + ' NGN' + ' ' + numberWithCommas(Number(subTitle))
-            : subTitle}
+          {subTitle}{' '}
         </Text>
         {rating && (
           <Box style={{ marginTop: 3 }}>

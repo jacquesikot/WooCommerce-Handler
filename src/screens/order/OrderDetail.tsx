@@ -137,7 +137,12 @@ const OrderDetail = ({
         </Text>
         <Box marginTop="s" style={{ flexDirection: 'row' }}>
           <Picker placeholder={status} options={statusValues} />
-          <Button title="Update" onPress={() => true} height={47} />
+          <Button
+            title="Update"
+            onPress={() => true}
+            height={47}
+            width={SCREEN_WIDTH * 0.4}
+          />
         </Box>
       </Box>
     </SafeAreaView>

@@ -42,13 +42,17 @@ export interface OnboardingBannerProps {
   subtitle: string;
 }
 
+export interface Images {
+  id: number;
+  src: string;
+}
+
 export interface ProductProps {
   id: number;
   name: string;
-  price: number;
-  image: ImageRequireSource;
-  quantity?: number;
-  rating?: number;
+  price: string;
+  images: Images[];
+  rating_count?: number;
 }
 
 export interface OrderProps {
