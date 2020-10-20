@@ -66,7 +66,7 @@ interface ListCardProps {
   image?: string;
   onPress: () => void;
   product?: boolean;
-  rating?: number;
+  rating: number;
   edit?: boolean;
   customer?: boolean;
   remove?: () => void;
@@ -106,13 +106,14 @@ const ListCard = ({
           {title}
         </Text>
         <Text variant="h8" color="primary" marginTop="s">
-          {subTitle}{' '}
+          {product
+            ? 'NGN' + ' ' + numberWithCommas(Number(subTitle))
+            : subTitle}
         </Text>
-        {rating && (
-          <Box style={{ marginTop: 3 }}>
-            <Rating rating={rating} color={theme.colors.yellow} />
-          </Box>
-        )}
+
+        <Box style={{ marginTop: 3 }}>
+          <Rating rating={rating} color={theme.colors.yellow} />
+        </Box>
       </Box>
       <Box style={{ flex: 1 }} />
       <Box>

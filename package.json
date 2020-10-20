@@ -27,7 +27,8 @@
     "react-native-screens": "~2.10.1",
     "react-native-svg": "12.1.0",
     "react-native-web": "~0.13.12",
-    "yup": "^0.29.3"
+    "yup": "^0.29.3",
+    "lottie-react-native": "~2.6.1"
   },
   "devDependencies": {
     "@types/react": "~16.9.35",

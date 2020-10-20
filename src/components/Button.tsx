@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Button as RNButton, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { Ionicons as Icon } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Box, theme, Text } from '../components';
 
@@ -61,8 +62,16 @@ const Button = ({
           {title}
         </Text>
       )}
-      {arrowRight && <Icon name="ios-arrow-round-forward" color={arrowColorValue} size={30} />}
-      {arrowLeft && <Icon name="ios-arrow-round-back" color={arrowColorValue} size={30} />}
+      {arrowRight && (
+        <Icon
+          name="ios-arrow-round-forward"
+          color={arrowColorValue}
+          size={30}
+        />
+      )}
+      {arrowLeft && (
+        <Icon name="ios-arrow-round-back" color={arrowColorValue} size={30} />
+      )}
     </TouchableOpacity>
   );
 };

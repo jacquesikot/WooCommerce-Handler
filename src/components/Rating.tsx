@@ -18,22 +18,24 @@ interface RatingProps {
 }
 
 const Rating = ({ rating, size, color }: RatingProps) => {
-  const filledStars = Math.floor(rating / 2);
+  const filledStars = rating && Math.floor(rating / 2);
   const maxStars = Array(5 - filledStars).fill('staro');
   const r = [...Array(filledStars).fill('star'), ...maxStars];
 
   return (
     <Box style={styles.container}>
-      {r.map((type, index) => {
-        return (
-          <AntDesign
-            key={index}
-            name={type}
-            size={size ? size : 12}
-            color={color ? color : theme.colors.yellow}
-          />
-        );
-      })}
+      {rating === 0
+        ? null
+        : r.map((type, index) => {
+            return (
+              <AntDesign
+                key={index}
+                name={type}
+                size={size ? size : 12}
+                color={color ? color : theme.colors.yellow}
+              />
+            );
+          })}
     </Box>
   );
 };

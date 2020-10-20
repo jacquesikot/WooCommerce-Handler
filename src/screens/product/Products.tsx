@@ -1,17 +1,29 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 
-import { Box, theme, Header, ListCard } from '../../components';
+import { Box, theme, Header, ListCard, Text, Button } from '../../components';
 import { ProductNavParamList } from '../../types';
 import productsApi from '../../api/products';
-// import { products } from '../../data';
+
+const { width } = Dimensions.get('window');
+const SCREEN_WIDTH = width - theme.spacing.xl * 2;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.dark,
     flex: 1,
     alignItems: 'center',
+  },
+  errorMessage: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -21,13 +33,21 @@ const Products = ({
   navigation,
 }: StackScreenProps<ProductNavParamList, 'Products'>) => {
   const [products, setProducts] = useState<any>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    loadListings();
+    loadProducts();
   }, []);
 
-  const loadListings = async () => {
+  const loadProducts = async () => {
+    setLoading(true);
     const response = await productsApi.getProducts();
+    setLoading(false);
+
+    if (!response.ok) return setError(true);
+
+    setError(false);
     setProducts(response.data);
   };
 
@@ -39,6 +59,18 @@ const Products = ({
         plus={() => navigation.navigate('AddProduct')}
       />
       <Box style={{ paddingBottom: 95 }}>
+        {error && (
+          <Box marginTop="xxxl" style={styles.errorMessage}>
+            <Text variant="h4" color="white" marginBottom="l">
+              Couldn't retrieve the products.
+            </Text>
+            <Button
+              title="Retry"
+              onPress={loadProducts}
+              width={SCREEN_WIDTH * 0.7}
+            />
+          </Box>
+        )}
         <FlatList
           showsVerticalScrollIndicator={false}
           data={products}
@@ -52,7 +84,7 @@ const Products = ({
                 onPress={() =>
                   navigation.navigate('ProductDetail', { product: item })
                 }
-                // rating={item.rating_count}
+                rating={item.rating_count ? item.rating_count : 0}
                 remove={() => true}
                 product
                 edit
