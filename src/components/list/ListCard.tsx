@@ -8,8 +8,7 @@ import {
 import { MaterialCommunityIcons as Icon, Feather } from '@expo/vector-icons';
 
 import { Box, theme, Text, Rating } from '../../components';
-import { numberWithCommas } from '../../utils';
-import { ProductProps } from '../../types';
+import { numberWithCommas } from '../../helpers';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width } = Dimensions.get('window');
 const SCREEN_WIDTH = width - theme.spacing.xxl * 2;
@@ -69,7 +68,7 @@ interface ListCardProps {
   rating: number;
   edit?: boolean;
   customer?: boolean;
-  remove?: () => void;
+  remove?: any;
 }
 
 const ListCard = ({

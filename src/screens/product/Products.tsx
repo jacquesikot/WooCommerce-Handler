@@ -1,16 +1,19 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  Dimensions,
-  ActivityIndicator,
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, SafeAreaView, FlatList, Dimensions } from 'react-native';
 
-import { Box, theme, Header, ListCard, Text, Button } from '../../components';
+import {
+  Box,
+  theme,
+  Header,
+  ListCard,
+  Text,
+  Button,
+  ActivityIndicator,
+} from '../../components';
 import { ProductNavParamList } from '../../types';
 import productsApi from '../../api/products';
+import useApi from '../../hooks/useApi';
 
 const { width } = Dimensions.get('window');
 const SCREEN_WIDTH = width - theme.spacing.xl * 2;
@@ -32,24 +35,15 @@ interface ProductsProps {}
 const Products = ({
   navigation,
 }: StackScreenProps<ProductNavParamList, 'Products'>) => {
-  const [products, setProducts] = useState<any>([]);
-  const [error, setError] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const { data: products, error, loading, request: loadProducts } = useApi(
+    productsApi.getProducts
+  );
+
+  const deleteProduct = useApi(productsApi.deleteProduct);
 
   useEffect(() => {
     loadProducts();
   }, []);
-
-  const loadProducts = async () => {
-    setLoading(true);
-    const response = await productsApi.getProducts();
-    setLoading(false);
-
-    if (!response.ok) return setError(true);
-
-    setError(false);
-    setProducts(response.data);
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -58,7 +52,8 @@ const Products = ({
         filter={() => true}
         plus={() => navigation.navigate('AddProduct')}
       />
-      <Box style={{ paddingBottom: 95 }}>
+      <ActivityIndicator visible={loading} />
+      <Box style={{ paddingBottom: 95 }} visible={!loading}>
         {error && (
           <Box marginTop="xxxl" style={styles.errorMessage}>
             <Text variant="h4" color="white" marginBottom="l">
@@ -80,12 +75,15 @@ const Products = ({
               <ListCard
                 title={item.name}
                 subTitle={item.price}
-                image={item.images[0].src}
+                // image={item.images[0].src}
                 onPress={() =>
                   navigation.navigate('ProductDetail', { product: item })
                 }
                 rating={item.rating_count ? item.rating_count : 0}
-                remove={() => true}
+                remove={() => {
+                  deleteProduct.request(item.id);
+                  loadProducts();
+                }}
                 product
                 edit
               />

@@ -4,7 +4,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
 
 import { Box, theme, Text } from '.';
 import { OrderProps, ProductProps } from '../types';
-import { capitalize, numberWithCommas } from '../utils';
+import { capitalize, numberWithCommas } from '../helpers';
 
 const { width } = Dimensions.get('window');
 const SCREEN_WIDTH = width - theme.spacing.xxl * 2;

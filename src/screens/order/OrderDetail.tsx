@@ -20,7 +20,7 @@ import {
   Button,
 } from '../../components';
 import { OrderNavParamList } from '../../types';
-import { numberWithCommas } from '../../utils';
+import { numberWithCommas } from '../../helpers';
 
 const { width, height: wHeight } = Dimensions.get('window');
 const SCREEN_WIDTH = width - theme.spacing.xl * 2;
@@ -114,7 +114,7 @@ const OrderDetail = ({
           Orderd Product(s)
         </Text>
         <Box marginTop="l" marginBottom="xl">
-          <FlatList
+          {/* <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             data={products}
@@ -122,11 +122,11 @@ const OrderDetail = ({
             renderItem={({ item }) => (
               <Box style={{ marginHorizontal: 10 }}>
                 <TouchableOpacity onPress={() => true}>
-                  <ProductSliderItem image={item.image} title={item.name} />
+                  <ProductSliderItem image={item.images[0].src} title={item.name} />
                 </TouchableOpacity>
               </Box>
             )}
-          />
+          /> */}
         </Box>
         <Box style={{ marginBottom: 15 }}>
           <ListModal label="Billing Details" onPress={() => true} height={57} />
@@ -136,7 +136,7 @@ const OrderDetail = ({
           Set Order Status
         </Text>
         <Box marginTop="s" style={{ flexDirection: 'row' }}>
-          <Picker placeholder={status} options={statusValues} />
+          <Picker placeholder={status} options={statusValues} name="status" />
           <Button
             title="Update"
             onPress={() => true}

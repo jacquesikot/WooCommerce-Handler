@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+  ButtonProps as RNButtonProps,
+} from 'react-native';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -17,7 +21,7 @@ const styles = StyleSheet.create({
   },
 });
 
-interface ButtonProps {
+interface ButtonProps extends RNButtonProps {
   width?: number;
   height?: number;
   arrowRight?: boolean;
@@ -25,7 +29,7 @@ interface ButtonProps {
   arrowColor?: string;
   bgColor?: string;
   textColor?: 'white' | 'primary';
-  title?: string;
+  title: string;
   onPress: () => void;
 }
 

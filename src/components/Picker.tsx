@@ -8,9 +8,9 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
+import { useFormikContext } from 'formik';
 
 import { Box, theme, Text } from '.';
-import { categories } from '../data';
 import ListItem from './list/ListItem';
 import { CategoriesProps } from '../types';
 
@@ -40,17 +40,19 @@ const styles = StyleSheet.create({
 interface optionsProps {
   id: number;
   name: string;
-  color: string;
 }
 
 interface PickerProps {
   placeholder: string;
   options: optionsProps[];
+  name: string;
 }
 
-const Picker = ({ placeholder, options }: PickerProps) => {
+const Picker = ({ placeholder, options, name }: PickerProps) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<CategoriesProps>();
+
+  const { errors, setFieldValue, touched, values } = useFormikContext();
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -93,6 +95,7 @@ const Picker = ({ placeholder, options }: PickerProps) => {
                 onPress={() => {
                   setModalVisible(false);
                   setSelectedItem(item);
+                  setFieldValue(name, item);
                 }}
               >
                 <ListItem label={item.name} />

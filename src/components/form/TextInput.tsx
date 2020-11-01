@@ -9,6 +9,7 @@ import {
   FontAwesome5 as Icon,
   MaterialCommunityIcons as Icon2,
 } from '@expo/vector-icons';
+import { useFormikContext } from 'formik';
 
 import { Box, theme, Text } from '..';
 
@@ -50,6 +51,7 @@ interface TextInputProps extends RNTextInputProps {
   iconBgColor?: string;
   error?: string;
   touched?: boolean;
+  name?: string;
 }
 
 const TextInput = ({
@@ -58,8 +60,11 @@ const TextInput = ({
   iconName,
   iconColor,
   iconBgColor,
+  name = 'demo',
   ...props
 }: TextInputProps) => {
+  const { values, setFieldValue, setFieldTouched } = useFormikContext();
+
   const widthNo = width ? width : SCREEN_WIDTH;
   const heightNo = height ? height : 54;
   const iconColorValue = iconColor ? iconColor : theme.colors.yellow;
@@ -82,6 +87,8 @@ const TextInput = ({
       <Box style={[styles.textInput]}>
         <RNTextInput
           underlineColorAndroid="transparent"
+          onBlur={() => setFieldTouched(name)}
+          onChangeText={(text) => setFieldValue(name, text)}
           placeholderTextColor={theme.colors.light}
           {...props}
           style={{ color: theme.colors.light }}

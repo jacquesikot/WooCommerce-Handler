@@ -13,6 +13,7 @@ export { default as Rating } from './Rating';
 export { default as ImageInput } from './ImageInput';
 export { default as ImageInputList } from './ImageInputList';
 export { default as Picker } from './Picker';
+export { default as ActivityIndicator } from './ActivityIndicator';
 
 export { default as TextInput } from './form/TextInput';
 export { default as ErrorMsg } from './form/ErrorMsg';

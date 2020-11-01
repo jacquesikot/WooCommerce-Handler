@@ -50,7 +50,10 @@ export interface Images {
 export interface ProductProps {
   id: number;
   name: string;
-  price: string;
+  type: string;
+  categories: CategoriesProps[];
+  regular_price: string;
+  description: string;
   images: Images[];
   rating_count?: number;
 }
